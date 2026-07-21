@@ -1,0 +1,2 @@
+# Real credential in the immutable original commit; requires provider-side revocation.
+5df442a187b4b2fbd6ede5f6b9b940b4104b5009:src/config/index.ts:generic-api-key:3

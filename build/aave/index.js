@@ -10,12 +10,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QUARANTINE_BOUNDARY = void 0;
-exports.QUARANTINE_BOUNDARY = Object.freeze({
-    classification: "retain-internal-quarantine",
-    networkExecutionAllowed: false,
-    walletAccessAllowed: false,
-    transactionExecutionAllowed: false,
-});
-throw new Error("Blocked: this archived blockchain package is quarantined and cannot be imported or executed.");
-__exportStar(require("./trading/investment-redeem"), exports);
+__exportStar(require("./AaveProvider"), exports);
+__exportStar(require("./borrow"), exports);
+__exportStar(require("./deposit"), exports);

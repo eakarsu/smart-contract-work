@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "artifactType": "archived-blockchain-integration-library",
+  "classification": "retain-internal-quarantine",
+  "deployable": false,
+  "publicPublishingAllowed": false,
+  "networkExecutionAllowed": false,
+  "walletAccessAllowed": false,
+  "transactionExecutionAllowed": false,
+  "containsFinancialTransactionCode": true,
+  "authentication": "not-applicable",
+  "applicationControls": {
+    "identity": "not-applicable",
+    "rbac": "not-applicable",
+    "segregationOfDuties": "not-applicable",
+    "persistence": "not-applicable",
+    "retentionAndLegalHold": "not-applicable",
+    "regulatoryIngestion": "not-applicable",
+    "versionedPoliciesAndApprovals": "not-applicable",
+    "auditExport": "not-applicable",
+    "scenarioEvaluation": "not-applicable"
+  },
+  "custodyBaseline": {
+    "observedRemote": "https://github.com/eakarsu/smart-contract-work",
+    "manifestRepositoryClaim": "https://github.com/devNgeni/erol-enzyme-aave-fork-protocol.git",
+    "commit": "5df442a187b4b2fbd6ede5f6b9b940b4104b5009",
+    "tree": "1b5188de1d69211add58f0c8b49ac437364648e5",
+    "commitCount": 1,
+    "trackedFiles": 123,
+    "trackedBytes": 11246185
+  },
+  "dependencyQuarantine": {
+    "total": 56,
+    "low": 20,
+    "moderate": 26,
+    "high": 8,
+    "critical": 2
+  },
+  "allowedOperations": ["inventory", "static-policy-test", "offline-typecheck", "owner-approved-clean-room-analysis"],
+  "prohibitedOperations": ["wallet-access", "rpc-or-subgraph-access", "transaction-sign-or-submit", "deploy", "publish", "redistribute", "asset-use"],
+  "unresolved": ["accountable-owner", "primary-provenance", "license-and-notices", "historical-credential-revocation", "supported-dependencies-and-networks", "security-review"],
+  "reason": "Archived 2022 blockchain integration fork with unverified provenance, obsolete network assumptions, known vulnerable dependencies, historical credentials, and unaudited transaction behavior"
+}

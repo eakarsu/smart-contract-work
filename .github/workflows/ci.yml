@@ -1,0 +1,30 @@
+name: ci
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify-quarantine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run boundary:verify
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Verify built package import fails closed
+        run: test "$(node -e \"require('./build/index.js')\" >/dev/null 2>&1; echo $?)" -ne 0
+      - run: npm run audit:quarantine
+      - name: Verify live operations fail closed
+        run: test "$(npm run getEth >/dev/null 2>&1; echo $?)" -eq 2
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
