@@ -38,7 +38,7 @@ const getDenominationAssets = async (SUB_GRAPH_ENDPOINT) => {
                  }
                  numberOfTokens
                  pool
-                
+
                  token1 {
                    decimals
                    id
@@ -49,7 +49,7 @@ const getDenominationAssets = async (SUB_GRAPH_ENDPOINT) => {
                    id
                    symbol
                  }
-                 
+
                }
                decimals
                derivativeType
@@ -119,9 +119,9 @@ const getCurrentUserFunds = async (SUB_GRAPH_ENDPOINT, accessor_address) => {
     try {
         const query = `{
         funds(first: 5, where: {manager: "${accessor_address}"}){
-             id 
+             id
              name
-             manager 
+             manager
              shares {
               totalSupply
             }
@@ -129,7 +129,7 @@ const getCurrentUserFunds = async (SUB_GRAPH_ENDPOINT, accessor_address) => {
                id
                denominationAsset{
                  symbol
-                 name 
+                 name
                  price{
                    price
                  }
@@ -181,7 +181,7 @@ const listAllUserTransactions = async (SUB_GRAPH_ENDPOINT, walletAddress) => {
         query: `{
       investments(where: {investor: "${walletAddress}"}){
       fund{
-       id 
+       id
        name
         sharesChanges(orderBy: timestamp, orderDirection: desc) {
           shares
@@ -190,7 +190,7 @@ const listAllUserTransactions = async (SUB_GRAPH_ENDPOINT, walletAddress) => {
             shares
           }
           fundState{
-            id 
+            id
             portfolio{
               id
               holdings{
@@ -205,10 +205,10 @@ const listAllUserTransactions = async (SUB_GRAPH_ENDPOINT, walletAddress) => {
                   price
                 }
               }
-            }  
+            }
           }
           ... on SharesBoughtEvent{
-            id 
+            id
             investmentAmount
             asset{
               id
@@ -219,17 +219,17 @@ const listAllUserTransactions = async (SUB_GRAPH_ENDPOINT, walletAddress) => {
               }
             }
             investor{
-              id 
+              id
             }
             transaction{
               id
               from
-              to 
+              to
             }
           }
-          
+
           ...on SharesRedeemedEvent{
-            id 
+            id
             investor{
               id
             }
@@ -239,13 +239,13 @@ const listAllUserTransactions = async (SUB_GRAPH_ENDPOINT, walletAddress) => {
               accessor{
                 id
                 denominationAsset{
-                  id 
+                  id
                   name
                   symbol
                 }
               }
             }
-            
+
             payoutAssetAmounts{
               asset{
                 id
@@ -261,13 +261,13 @@ const listAllUserTransactions = async (SUB_GRAPH_ENDPOINT, walletAddress) => {
               }
             }
             transaction{
-              id 
-              from 
+              id
+              from
               to
             }
           }
         }
-      } 
+      }
     }
     }`,
     });
@@ -393,9 +393,9 @@ const walletAddressUserVaults = async (SUB_GRAPH_ENDPOINT, user_address) => {
     const query = `
     {
       funds(where: {manager: "${user_address}"}){
-           id 
+           id
            name
-           manager 
+           manager
            shares {
             totalSupply
           }
@@ -403,7 +403,7 @@ const walletAddressUserVaults = async (SUB_GRAPH_ENDPOINT, user_address) => {
              id
              denominationAsset{
                symbol
-               name 
+               name
                price{
                  price
                }
@@ -577,7 +577,7 @@ const entranceDirectBurnFees = async (SUB_GRAPH_ENDPOINT, fundId) => {
     {
       entranceRateBurnFeeSettledEvents(where:{fund: "${fundId}"}){
         fund{
-          id 
+          id
         }
         sharesQuantity
       }
@@ -607,7 +607,7 @@ const managementFee = async (SUB_GRAPH_ENDPOINT, comptrollerId) => {
         id
         comptroller{
           id
-        }    
+        }
         scaledPerSecondRate
       }
     }`;
